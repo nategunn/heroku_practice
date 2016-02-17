@@ -1,8 +1,29 @@
 {
-  "dependencies": 
-  {
+  "dependencies": {
     "body-parser": "^1.14.2",
     "express": "^4.13.3",
     "mongoose": "^4.3.3"
-  }
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "mean_angular_test_6",
+  "version": "1.0.0",
+  "description": "survey app heroku practice",
+  "main": "server.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nategunn/heroku_practice.git"
+  },
+  "keywords": [
+    "heroku",
+    "practice"
+  ],
+  "author": "nate_gunn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nategunn/heroku_practice/issues"
+  },
+  "homepage": "https://github.com/nategunn/heroku_practice#readme"
 }
