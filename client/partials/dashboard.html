@@ -1,0 +1,21 @@
+<div ng-controller='QuestionController'>
+	<a href='#/dashboard'>Home</a> | <a href='#/new_question'>Add a Question</a> | <a ng-href='#/' ng-click='logOff()'>Log off</a>
+
+	<h3>Question List...</a>
+	<h4 ng-bind='messages.message' class='message'></h4>
+
+	<label>Search: <input type='text' ng-model='filter_name' placeholder='search games...'/></label>
+
+	<table>
+		<tr>
+			<th>Question</th>
+			<th>Answers</th>
+			<th>Action</th>
+		</tr>
+		<tr ng-repeat="question in questions | filter:filter_name | orderBy:'-date'">
+			<td>{{question.question}}</td>
+			<td>{{question.answer_count}}</td>
+			<td><button ng-click='showQuestion(question._id)'>Show</button>  <button ng-click='answerQuestion(question._id)'>Answer</button></td>
+		</tr>
+	</table>
+</div><!-- end question controller -->

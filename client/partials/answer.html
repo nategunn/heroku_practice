@@ -1,0 +1,18 @@
+<div ng-controller='QuestionController'>
+
+	<a href='#/dashboard'>Home</a> | <a href='#/new_question'>Add a Question</a> | <a ng-href='#/' ng-click='logOff()'>Log off</a>
+
+	<h3>{{question.question}}</h3>
+	<p>{{question.description}}</p>
+
+	<h4 ng-bind='errors.error' class='error'></h4>
+
+	<label>Your Answer: <textarea ng-model='newAnswer.answer'></textarea> </label>
+
+	<label>Support Your Answer: <textarea ng-model='newAnswer.support' placeholder='optional'></textarea></label>
+
+	<a ng-href='#/'><button>Cancel</button></a> 
+
+	<a ng-click='createAnswer(question._id,newAnswer)'><button>Submit</button></a>
+
+</div>

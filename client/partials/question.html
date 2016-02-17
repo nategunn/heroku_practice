@@ -1,0 +1,14 @@
+<div ng-controller='QuestionController'>
+	<a href='#/dashboard'>Home</a> | <a href='#/new_question'>Add a Question</a> | <a ng-href='#/' ng-click='logOff()'>Log off</a>
+
+	<h3>{{question.question}}</h3>
+	<p>{{question.description}}</p>
+
+	<div ng-repeat="answer in question.answers | orderBy:'-like_count'">
+		<p>{{answer.author}}</p>
+		<p>{{answer.answer}}</p>
+		<p><small>{{answer.support}}</small></p>
+		<p>{{answer.like_count}} <button ng-click='addLike(answer._id,question._id)'>Like</button>
+	</div>
+
+</div>
