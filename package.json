@@ -1,8 +1,10 @@
 {
   "dependencies": {
+    "body": "^5.1.0",
     "body-parser": "^1.14.2",
-    "express": "^4.13.3",
-    "mongoose": "^4.3.3"
+    "express": "^4.13.4",
+    "mongoose": "^4.4.3",
+    "parser": "^0.1.4"
   },
   "scripts": {
     "start": "node server.js"
