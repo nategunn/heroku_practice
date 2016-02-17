@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node server.js"
   },
-  "name": "mean_angular_test_6",
+  "name": "heroku_practice_survey",
   "version": "1.0.0",
   "description": "survey app heroku practice",
   "main": "server.js",
