@@ -1,12 +1,21 @@
 <div ng-controller='QuestionController'>
 	<a href='#/dashboard'>Home</a> | <a href='#/new_question'>Add a Question</a> | <a ng-href='#/' ng-click='logOff()'>Log off</a>
 
-	<h3>New Question</a>
+	<h2>Create A New Question!</h2>
 	<h4 ng-bind='errors.error' class='error'></h4>
 
-		<label>Question: <textarea ng-model='newQuestion.question'></textarea></label>
-		<label>Description: <textarea ng-model='newQuestion.description' placeholder='optional'></textarea></label>
-		<a ng-href='#/'><button>Cancel</button></a> 
+	<table class='new_table'>
+		<tr>
+			<td>Question: </td>
+			<td><label class='new_q_lab'><textarea ng-model='newQuestion.question'></textarea></label></td>
+		</tr>
+		<tr>
+			<td>Description: </td>
+			<td><label class='new_q_lab'><textarea ng-model='newQuestion.description' placeholder='optional'></textarea></label></td>
+		</tr>
+	</table>
+
 		<a ng-click='createQuestion()'><button>Submit</button></a>
+		<a ng-href='#/'><button>Cancel</button></a> 
 
 </div><!-- end question controller -->
