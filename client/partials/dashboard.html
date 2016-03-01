@@ -6,7 +6,7 @@
 
 	
 
-	<table>
+	<table class='dash_table'>
 		<tr>
 			<td class='search'></td>
 			<td class='search'></td>
@@ -17,10 +17,10 @@
 			<th>Answer Count</th>
 			<th></th>
 		</tr>
-		<tr ng-repeat="question in questions | filter:filter_name | orderBy:'-date'">
+		<tr class='dash_row' ng-repeat="question in questions | filter:filter_name | orderBy:'-date'">
 			<td>{{question.question}}</td>
-			<td class='count'>{{question.answer_count}}</td>
-			<td class='buttons'><button ng-click='answerQuestion(question._id)' class='answer_button'>Answer Question</button>  <button ng-click='showQuestion(question._id)'>Show Answers</button></td>
+			<td class='answer_count'>{{question.answer_count}}</td>
+			<td class='button_td_dash'><button ng-click='answerQuestion(question._id)' class='answer_button'>Answer Question</button>  <button ng-click='showQuestion(question._id)'>Show Answers</button></td>
 		</tr>
 	</table>
 </div><!-- end question controller -->

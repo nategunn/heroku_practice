@@ -4,13 +4,13 @@
 	<h2>Create A New Question!</h2>
 	<h4 ng-bind='errors.error' class='error'></h4>
 
-	<table class='new_table'>
+	<table class='add_ans_table'>
 		<tr>
-			<td>Question: </td>
+			<td class='text_label'>Question: </td>
 			<td><label class='new_q_lab'><textarea ng-model='newQuestion.question'></textarea></label></td>
 		</tr>
 		<tr>
-			<td>Description: </td>
+			<td class='text_label'>Description: </td>
 			<td><label class='new_q_lab'><textarea ng-model='newQuestion.description' placeholder='optional'></textarea></label></td>
 		</tr>
 	</table>

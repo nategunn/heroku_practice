@@ -41,19 +41,10 @@ table{
 	border-spacing:0;
 }
 
-/*th, td{
-	vertical-align:top;	
-}*/
 
 th{
 	text-align:left;
 	padding:3px 0;
-}
-
-td{
-	padding:5px 50px 5px 0;
-	margin-right:10px;
-	border-top:1px solid red;
 }
 
 button{
@@ -69,17 +60,24 @@ textarea{
 	padding:3px;
 }
 
-.search{
+/*************************DASHBOARD**********/
+.dash_table td{
+	padding:5px 50px 5px 0;
+	margin-right:10px;
+	border-top:1px solid red;
+}
+
+.dash_table .button_td_dash{
+	padding:5px 0 5px 50px;
+}
+
+.dash_table .search{
 	border:none;
 	text-align:right;
 	padding:0;
 }
 
-.buttons{
-	padding:5px 0 5px 50px;
-}
-
-.count{
+.answer_count{
 	text-align:center;
 	padding:5px 0;
 
@@ -89,21 +87,53 @@ textarea{
 	margin-right:10px;
 }
 
-.new_q_lab{
-	display:block;
-	vertical-align:top;
-}
+/*************************NEW QUESTION & ANSWER QUESTION**********/
 
-.new_table{
+.add_ans_table{
 	margin-bottom:10px;
 }
 
-.new_table td{
+.add_ans_table td{
 	border:none;
+	padding:5px 10px 5px 0;
+	font-weight:bold;
+	vertical-align:top;
+}
+
+/********************ANSWERS********************************/
+.response{
 	padding:5px;
+	margin-bottom:20px;
+	background-color:#E8E6E6;
+	max-width:400px;
+}
+
+.answer,
+.support{
+	padding-left:10px;
+}
+
+.answer{
 	font-weight:bold;
 }
 
+.support{
+	display:inline-block;
+	width:300px;
+}
+
+.like_count{
+	display:inline-block;
+	width:75px;
+	font-weight:bold;
+}
+
+.like{
+	background-color:#FFF;
+}
+
+
+/***************************A-TAGS*********/
 a:link,
 a:visited {
 	font-weight:bold;
