@@ -3,6 +3,9 @@ var qa_app = angular.module('qa_app',['ngRoute']);
 qa_app.config(function($routeProvider,$locationProvider){
 	$routeProvider
 	.when('/',{
+		templateUrl: 'partials/login.html'
+	})
+	.when('/dash',{
 		templateUrl: 'partials/dashboard.html'
 	})
 	.when('/new_question',{
@@ -17,69 +20,66 @@ qa_app.config(function($routeProvider,$locationProvider){
 	.otherwise({
 		redirectTo:'/'
 	});
-})
+});
 
 ///////////////////////////QUESTION FACTORY
 qa_app.factory('QuestionFactory',function($http){
-	var currentUser = ''
+	var currentUser = '';
 	var factory = {};
 
 	factory.currUser = function(callback){
 		callback(currentUser);
-	}
+	};
 
-	factory.indexUser = function(callback){
-		currentUser= prompt('Please enter your name.');
-		$http.get('/questions').success(function(data){
-			callback(data);
-		})
-	}
+	factory.welcomeUser = function(info){
+		currentUser=info.name;
+	};
 
 	factory.index=function(callback){
 		$http.get('/questions').success(function(data){
 			callback(data);
-		})
-	}
+		});
+	};
 
 	factory.logOff = function(info){
 		currentUser=info;
-	}
+	};
 
 	factory.createQuestion=function(info,callback){
 		$http.post('/createQuestion',info).success(function(data){
 			callback(data);
-		})
-	}
+		});
+	};
 
 	factory.createAnswer=function(info,callback){
 		console.log(info.name);
 		$http.post('/createAnswer',info).success(function(data){
 			callback(data);
-		})
-	}
+		});
+	};
 
 	factory.showQuestion=function(info,callback){
 		console.log(info);
 		$http.post('/showQuestion',info).success(function(data){
 			callback(data);
-		})
-	}
+		});
+	};
 
 	factory.answerQuestion=function(info,callback){
 		console.log(info);
 		$http.post('/answerQuestion',info).success(function(data){
 			callback(data);
-		})
-	}
+		});
+	};
 
 	factory.addLike=function(info,callback){
 		$http.post('/addLike',info).success(function(data){
 			callback(data);
-		})
-	}
+		});
+	};
 
 	return factory;
-})
+});
 
 
 
@@ -92,42 +92,49 @@ qa_app.factory('QuestionFactory',function($http){
 
  	QuestionFactory.currUser(function(data){
 		$scope.currentUser = data;
-	})
+	});
 
 	QuestionFactory.index(function(data){
 		$scope.questions=data;
-	})
+	});
 
- 	if($scope.currentUser =='')//this if/else statement prevents index from prompting for a new currentUser if the currentUser is already set
+ 	if($scope.currentUser ==='')//this if/else statement prevents index from prompting for a new currentUser if the currentUser is already set
 	{
-		QuestionFactory.indexUser(function(data){
-			$scope.questions=data;
-		})
+		$location.path('/');
+		// QuestionFactory.indexUser(function(data){
+		// 	$scope.questions=data;
+		// });
 
-		QuestionFactory.currUser(function(data){
-			$scope.currentUser = data;
-		})
+		// QuestionFactory.currUser(function(data){
+		// 	$scope.currentUser = data;
+		// });
 	}
-	else
-	{
+	// else
+	// {
 
-		QuestionFactory.index(function(data){
-			console.log('else');
-			$scope.questions=data;
-		})
+	// 	QuestionFactory.index(function(data){
+	// 		console.log('else');
+	// 		$scope.questions=data;
+	// 	});
+	// }
+
+	$scope.welcomeUser=function(){
+		QuestionFactory.welcomeUser($scope.newUser);
+		$location.path('/dash');
 	}
+
 
 	$scope.logOff=function(){
 		// $scope.currentUser = '';
 
-		QuestionFactory.indexUser(function(data){
-			$scope.games=data;
-		})
+		// QuestionFactory.indexUser(function(data){
+		// 	$scope.games=data;
+		// });
 
 		QuestionFactory.currUser(function(data){
 			$scope.currentUser = data;
-		})
-	}
+		});
+	};
 
 	$scope.createQuestion=function(){
 		console.log('really');
@@ -140,15 +147,15 @@ qa_app.factory('QuestionFactory',function($http){
 			else
 			{
 				$scope.messages=data;
-				$location.path('/').search({messages:data});
+				$location.path('/dash').search({messages:data});
 
 				QuestionFactory.index(function(data){
 					$scope.questions = data;
-				})
+				});
 
 			}
-		})
-	}
+		});
+};
 
 	$scope.createAnswer=function(info,newAnswer){
 		newAnswer.author=$scope.currentUser;
@@ -166,11 +173,11 @@ qa_app.factory('QuestionFactory',function($http){
 
 				QuestionFactory.index(function(data){
 					$scope.questions = data;
-				})
+				});
 
 			}
-		})
-	}
+		});
+	};
 
 	$scope.showQuestion=function(info){
 		QuestionFactory.showQuestion({_id:info},function(data){
@@ -178,9 +185,9 @@ qa_app.factory('QuestionFactory',function($http){
 			$location.path('/question').search({question:data});
 			QuestionFactory.index(function(data){
 				$scope.questions=data;
-			})
-		})
-	}
+			});
+		});
+	};
 	
 	$scope.answerQuestion=function(info){
 		QuestionFactory.answerQuestion({_id:info},function(data){
@@ -188,19 +195,19 @@ qa_app.factory('QuestionFactory',function($http){
 			$location.path('/answer').search({question:data});
 			QuestionFactory.index(function(data){
 				$scope.questions=data;
-			})
-		})
-	}
+			});
+		});
+	};
 
 	$scope.addLike=function(answerId,questionId){
 
 		QuestionFactory.addLike({answer_id:answerId,question_id:questionId},function(data){
 			$scope.question=data;
 			// $location.path('/question').search({question:data});
-		})
-	}
+		});
+	};
 
 
 
 
-})
+});

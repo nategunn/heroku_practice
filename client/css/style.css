@@ -132,6 +132,11 @@ textarea{
 	background-color:#FFF;
 }
 
+/**************************LOGIN*********/
+
+.name{
+	margin-bottom:5px;
+}
 
 /***************************A-TAGS*********/
 a:link,
