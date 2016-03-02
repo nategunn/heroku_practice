@@ -24,7 +24,7 @@ body{
 
 .wrapper{
 	width:780px; /*width of wrapper = width of sidebars + gutters-- added 40px*/
-	margin: 20px auto;
+	margin: 20px;
 
 }
 
